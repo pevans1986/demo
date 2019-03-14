@@ -105,7 +105,7 @@ namespace Evans.Demo.Core.Extensions.System
 		}
 
 		/// <summary>
-		/// Converts CamelCase strings to Separate Words (e.g. Camel Case).
+		/// Converts title case and camel case strings to separate words.
 		/// </summary>
 		public static string ToSeparateWords(this string value)
 		{
