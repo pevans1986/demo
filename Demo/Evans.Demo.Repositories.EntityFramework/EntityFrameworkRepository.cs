@@ -15,27 +15,18 @@ namespace Evans.Demo.Repositories.EntityFramework
 		where TContext : DbContext
 		where TEntity : class, IDomainEntity
 	{
-		#region Private Fields
-
-		private TContext _context;
-
-		#endregion Private Fields
-
 		#region Public Constructors
 
 		public EntityFrameworkRepository(TContext context)
 		{
-			_context = context;
+			Context = context;
 		}
 
 		#endregion Public Constructors
 
 		#region Protected Properties
 
-		protected virtual TContext Context
-		{
-			get { return _context; }
-		}
+		protected virtual TContext Context { get; }
 
 		#endregion Protected Properties
 
@@ -45,13 +36,6 @@ namespace Evans.Demo.Repositories.EntityFramework
 		{
 			Context.Entry(entity).State = EntityState.Added;
 			return this;
-		}
-
-		public override IQueryable<TEntity> All()
-		{
-			return Context
-				.Set<TEntity>()
-				.AsQueryable();
 		}
 
 		public override IRepository<TEntity> Delete(TEntity entity)
@@ -76,13 +60,6 @@ namespace Evans.Demo.Repositories.EntityFramework
 			return Context.Set<TEntity>().Find(keys);
 		}
 
-		public override List<TEntity> GetAll()
-		{
-			return Context
-				.Set<TEntity>()
-				.ToList();
-		}
-
 		public override TEntity FindById(object id)
 		{
 			if (id is Guid)
@@ -101,6 +78,20 @@ namespace Evans.Demo.Repositories.EntityFramework
 				.Set<TEntity>()
 				.Where(predicate)
 				.ToList();
+		}
+
+		public override List<TEntity> GetAll()
+		{
+			return Context
+				.Set<TEntity>()
+				.ToList();
+		}
+
+		public override IQueryable<TEntity> Query()
+		{
+			return Context
+				.Set<TEntity>()
+				.AsQueryable();
 		}
 
 		public override IRepository<TEntity> Save(TEntity model)

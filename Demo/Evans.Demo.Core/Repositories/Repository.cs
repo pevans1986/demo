@@ -11,7 +11,7 @@ namespace Evans.Demo.Core.Repositories
 
 		public abstract IRepository<TEntity> Add(TEntity entity);
 
-		public abstract IQueryable<TEntity> All();
+		public abstract IQueryable<TEntity> Query();
 
 		public abstract IRepository<TEntity> Delete(TEntity entity);
 
