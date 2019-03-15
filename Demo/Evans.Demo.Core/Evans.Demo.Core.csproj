@@ -46,6 +46,7 @@
     <Compile Include="Domain\IModel.cs" />
     <Compile Include="Extensions\System\ObjectExtensions.cs" />
     <Compile Include="Extensions\System\StringExtensions.cs" />
+    <Compile Include="Extensions\System\TypeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />

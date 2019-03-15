@@ -1,5 +1,4 @@
-﻿using Evans.Demo.Core.Extensions.System;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +11,8 @@ namespace Evans.Demo.Core.Extensions.System.Tests
 	[TestFixture]
 	public class ObjectExtensionsTests
 	{
+		#region Private Fields
+
 		private readonly Person _person = new Person
 		{
 			Name = "Test Person",
@@ -21,6 +22,10 @@ namespace Evans.Demo.Core.Extensions.System.Tests
 				new Person(), new Person()
 			}
 		};
+
+		#endregion Private Fields
+
+		#region Public Methods
 
 		[Test]
 		public void GetPropertyValue_ShouldGetValueAsObject()
@@ -39,13 +44,23 @@ namespace Evans.Demo.Core.Extensions.System.Tests
 			Assert.AreEqual(_person.Relatives, relatives);
 		}
 
+		#endregion Public Methods
+
+		#region Private Classes
+
 		private class Person
 		{
-			public string Name { get; set; }
+			#region Public Properties
 
 			public int Age { get; set; }
 
+			public string Name { get; set; }
+
 			public IEnumerable<Person> Relatives { get; set; }
+
+			#endregion Public Properties
 		}
+
+		#endregion Private Classes
 	}
 }

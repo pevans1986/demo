@@ -1,16 +1,18 @@
-﻿using NUnit.Framework;
-using Evans.Demo.Core.Extensions.System;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using NUnit.Framework;
+
 namespace Evans.Demo.Core.Extensions.System.Tests
 {
-	[TestFixture()]
+	[TestFixture]
 	public class StringExtensionsTests
 	{
+		#region Public Methods
+
 		[Test]
 		public void CollapseSpaces_ShouldCollapseAllInstances()
 		{
@@ -59,17 +61,17 @@ namespace Evans.Demo.Core.Extensions.System.Tests
 		}
 
 		[Test]
-		public void IsBlank_ShouldIdentifyNullBlankOrEmptyStrings([Values("", " ", null)] string value)
-		{
-			Assert.IsTrue(value.IsBlank());
-		}
-
-		[Test]
 		public void IsBlank_ShouldIdentifyNonNullBlankOrEmptyStrings()
 		{
 			const string testString = "Not blank";
 
 			Assert.IsFalse(testString.IsBlank());
+		}
+
+		[Test]
+		public void IsBlank_ShouldIdentifyNullBlankOrEmptyStrings([Values("", " ", null)] string value)
+		{
+			Assert.IsTrue(value.IsBlank());
 		}
 
 		[Test]
@@ -81,15 +83,15 @@ namespace Evans.Demo.Core.Extensions.System.Tests
 		}
 
 		[Test]
-		public void IsNonBlank_ShouldIdentifyNonBlankStrings([Values("not blank", "notblank")] string value)
-		{
-			Assert.IsTrue(value.IsNonBlank());
-		}
-
-		[Test]
 		public void IsNonBlank_ShouldIdentifyBlankStrings([Values("", "   ", null)] string value)
 		{
 			Assert.IsFalse(value.IsNonBlank());
+		}
+
+		[Test]
+		public void IsNonBlank_ShouldIdentifyNonBlankStrings([Values("not blank", "notblank")] string value)
+		{
+			Assert.IsTrue(value.IsNonBlank());
 		}
 
 		[Test]
@@ -125,5 +127,7 @@ namespace Evans.Demo.Core.Extensions.System.Tests
 			Assert.AreEqual("12345".Truncate(3), "123");
 			Assert.AreEqual("12".Truncate(3), "12");
 		}
+
+		#endregion Public Methods
 	}
 }
