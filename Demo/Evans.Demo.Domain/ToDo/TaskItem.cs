@@ -20,6 +20,8 @@ namespace Evans.Demo.Domain.ToDo
 
 		public virtual TaskList List { get; set; }
 
+		public int SortOrder { get; set; }
+
 		public virtual ItemStatus Status { get; set; }
 
 		#endregion Public Properties

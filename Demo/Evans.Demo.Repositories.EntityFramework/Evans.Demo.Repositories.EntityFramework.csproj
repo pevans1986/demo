@@ -49,7 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainContext.cs" />
+    <Compile Include="ToDo\ToDoContext.cs" />
+    <Compile Include="EntityFrameworkRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Evans.Demo.Core\Evans.Demo.Core.csproj">
+      <Project>{6017E350-A76C-49D1-A409-7768F409016D}</Project>
+      <Name>Evans.Demo.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Evans.Demo.Domain\Evans.Demo.Domain.csproj">
       <Project>{E887BBB9-1060-4B2E-B1E6-81C7290691BC}</Project>
       <Name>Evans.Demo.Domain</Name>

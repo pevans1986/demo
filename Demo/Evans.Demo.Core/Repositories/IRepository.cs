@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Evans.Demo.Core.Repositories
 {
@@ -21,11 +19,11 @@ namespace Evans.Demo.Core.Repositories
 
 		TModel Find(params object[] keys);
 
-		List<TModel> FindAll();
-
 		TModel FindById(object id);
 
 		List<TModel> FindWhere(Expression<Func<TModel, bool>> predicate);
+
+		List<TModel> GetAll();
 
 		IRepository<TModel> Save(TModel model);
 

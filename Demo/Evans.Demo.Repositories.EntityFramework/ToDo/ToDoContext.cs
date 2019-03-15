@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Evans.Demo.Repositories.EntityFramework
+namespace Evans.Demo.Repositories.EntityFramework.ToDo
 {
-	public class DomainContext : DbContext
+	public class ToDoContext : DbContext
 	{
 		#region Public Properties
 		
@@ -20,7 +20,7 @@ namespace Evans.Demo.Repositories.EntityFramework
 
 		#region Public Constructors
 
-		public DomainContext() : base(nameof(DomainContext)) { }
+		public ToDoContext() : base(nameof(ToDoContext)) { }
 
 		#endregion Public Constructors
 	}
