@@ -49,8 +49,12 @@ namespace Evans.Demo.Core.Services
 
 		public void Delete(Guid id)
 		{
-			Repository.DeleteById(id);
-			Repository.SaveChanges();
+			var entity = GetById(id);
+			if (entity != null)
+			{
+				Repository.Delete(entity);
+				Repository.SaveChanges();
+			}
 		}
 
 		public void Delete(T value)
@@ -83,13 +87,18 @@ namespace Evans.Demo.Core.Services
 
 		public virtual T GetById(Guid id)
 		{
-			return Repository.FindById(id);
+			return Repository.Query().FirstOrDefault(entity => entity.Id == id);
 		}
 
 		public virtual async Task<T> GetByIdAsync(Guid? id)
 		{
+			if (id == null)
+			{
+				throw new ArgumentNullException(nameof(id));
+			}
+
 			return await Task.Factory
-				.StartNew<T>(() => Repository.FindById(id))
+				.StartNew<T>(() => GetById((Guid)id))
 				.ConfigureAwait(false);
 		}
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,40 +43,9 @@ namespace Evans.Demo.Repositories.EntityFramework
 			return this;
 		}
 
-		public override IRepository<TEntity> DeleteById(object id)
-		{
-			var entity = FindById(id);
-			return Delete(entity);
-		}
-
 		public override void Dispose()
 		{
 			Context?.Dispose();
-		}
-
-		public override TEntity Find(params object[] keys)
-		{
-			return Context.Set<TEntity>().Find(keys);
-		}
-
-		public override TEntity FindById(object id)
-		{
-			if (id is Guid)
-			{
-				return Context
-					.Set<TEntity>()
-					.Find(id);
-			}
-
-			return null;
-		}
-
-		public override List<TEntity> FindWhere(Expression<Func<TEntity, bool>> predicate)
-		{
-			return Context
-				.Set<TEntity>()
-				.Where(predicate)
-				.ToList();
 		}
 
 		public override List<TEntity> GetAll()
@@ -104,13 +72,6 @@ namespace Evans.Demo.Repositories.EntityFramework
 		{
 			Context.SaveChanges();
 			return this;
-		}
-
-		public override IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
-		{
-			return Context
-				.Set<TEntity>()
-				.Where(predicate);
 		}
 
 		#endregion Public Methods

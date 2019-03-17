@@ -8,10 +8,12 @@ using Evans.Demo.Core.Domain;
 
 namespace Evans.Demo.Core.Repositories
 {
-	public class InMemoryRepository<TEntity> : Repository<TEntity>, IRepository<TEntity> where TEntity : IDomainEntity
+	public class InMemoryRepository<TEntity> : Repository<TEntity>, IRepository<TEntity> 
+		where TEntity : IDomainEntity
 	{
 		#region Private Fields
 
+		// TODO Make thread safe
 		private readonly List<TEntity> _data = new List<TEntity>();
 
 		#endregion Private Fields
@@ -35,18 +37,7 @@ namespace Evans.Demo.Core.Repositories
 			return this;
 		}
 
-		public override IRepository<TEntity> DeleteById(object id)
-		{
-			throw new NotImplementedException();
-		}
-
 		public override void Dispose() { }
-
-		public override TEntity Find(params object[] keys)
-		{
-			// TODO Look for properties with Key attribute; check EF implementation
-			throw new NotImplementedException();
-		}
 
 		public override List<TEntity> GetAll() => _data;
 
@@ -54,7 +45,15 @@ namespace Evans.Demo.Core.Repositories
 
 		public override IRepository<TEntity> Save(TEntity model)
 		{
-			throw new NotImplementedException();
+			var entity = Query().FirstOrDefault(entry => entry.Id == model.Id);
+			if (entity != null)
+			{
+				GetAll().Remove(entity);
+			}
+
+			GetAll().Add(model);
+
+			return this;
 		}
 
 		public override IRepository<TEntity> SaveChanges() => this;
