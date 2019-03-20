@@ -9,8 +9,10 @@ using System.Web.Routing;
 
 namespace Evans.Demo.Web.Api
 {
-	public class WebApiApplication : System.Web.HttpApplication
+	public class WebApiApplication : HttpApplication
 	{
+		#region Protected Methods
+
 		protected void Application_Start()
 		{
 			AreaRegistration.RegisterAllAreas();
@@ -19,5 +21,7 @@ namespace Evans.Demo.Web.Api
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 		}
+
+		#endregion Protected Methods
 	}
 }

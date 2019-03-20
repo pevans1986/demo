@@ -1,13 +1,16 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Evans.Demo.Web.Api
 {
-	public class FilterConfig
+	public static class FilterConfig
 	{
+		#region Public Methods
+
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
 			filters.Add(new HandleErrorAttribute());
 		}
+
+		#endregion Public Methods
 	}
 }
