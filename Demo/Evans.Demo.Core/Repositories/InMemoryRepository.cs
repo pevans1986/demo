@@ -22,7 +22,7 @@ namespace Evans.Demo.Core.Repositories
 
 		public override IRepository<TEntity> Add(TEntity entity)
 		{
-			if (!_data.Contains(entity))
+			if (!Contains(entity))
 			{
 				_data.Add(entity);
 			}
@@ -42,7 +42,14 @@ namespace Evans.Demo.Core.Repositories
 
 		public override IRepository<TEntity> Delete(TEntity entity)
 		{
-			_data.Remove(entity);
+			if (_data.Contains(entity))
+			{
+				_data.Remove(entity);
+			}
+			else
+			{
+				_data.RemoveAll(item => item.Id == entity.Id);
+			}
 
 			return this;
 		}
