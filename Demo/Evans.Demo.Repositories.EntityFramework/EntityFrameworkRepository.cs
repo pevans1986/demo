@@ -37,6 +37,11 @@ namespace Evans.Demo.Repositories.EntityFramework
 			return this;
 		}
 
+		public override bool Contains(TEntity entity)
+		{
+			return Context.Entry(entity) != null;
+		}
+
 		public override IRepository<TEntity> Delete(TEntity entity)
 		{
 			Context.Entry(entity).State = EntityState.Deleted;

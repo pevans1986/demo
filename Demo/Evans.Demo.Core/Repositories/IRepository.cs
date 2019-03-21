@@ -10,6 +10,8 @@ namespace Evans.Demo.Core.Repositories
 
 		IRepository<TModel> Add(TModel entity);
 
+		bool Contains(TModel entity);
+
 		IRepository<TModel> Delete(TModel entity);
 
 		List<TModel> GetAll();

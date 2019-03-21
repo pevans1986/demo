@@ -30,6 +30,16 @@ namespace Evans.Demo.Core.Repositories
 			return this;
 		}
 
+		public override bool Contains(TEntity entity)
+		{
+			if (entity == null)
+			{
+				throw new ArgumentNullException(nameof(entity));
+			}
+
+			return Query().Any(item => item.Id == entity.Id);
+		}
+
 		public override IRepository<TEntity> Delete(TEntity entity)
 		{
 			_data.Remove(entity);

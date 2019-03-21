@@ -16,6 +16,8 @@ namespace Evans.Demo.Core.Repositories
 
 		public abstract IRepository<TEntity> Add(TEntity entity);
 
+		public abstract bool Contains(TEntity entity);
+
 		public abstract IRepository<TEntity> Delete(TEntity entity);
 
 		public abstract void Dispose();

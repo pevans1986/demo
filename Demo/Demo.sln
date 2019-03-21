@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Core.Web.Api", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Web.Api", "Evans.Demo.Web.Api\Evans.Demo.Web.Api.csproj", "{F5643CF4-74F9-43BC-A0CC-67D97ECF5897}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Services", "Evans.Demo.Services\Evans.Demo.Services.csproj", "{30678D7D-A2C7-4928-B87F-67D9B1C11DDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{F5643CF4-74F9-43BC-A0CC-67D97ECF5897}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5643CF4-74F9-43BC-A0CC-67D97ECF5897}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5643CF4-74F9-43BC-A0CC-67D97ECF5897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30678D7D-A2C7-4928-B87F-67D9B1C11DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30678D7D-A2C7-4928-B87F-67D9B1C11DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30678D7D-A2C7-4928-B87F-67D9B1C11DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30678D7D-A2C7-4928-B87F-67D9B1C11DDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

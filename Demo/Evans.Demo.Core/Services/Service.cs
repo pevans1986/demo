@@ -10,7 +10,8 @@ using Evans.Demo.Core.Repositories;
 
 namespace Evans.Demo.Core.Services
 {
-	public abstract class Service<T> : IService<T> where T : IDomainEntity
+	public abstract class Service<T> : IService<T> 
+		where T : IDomainEntity
 	{
 		#region Private Fields
 
@@ -43,7 +44,15 @@ namespace Evans.Demo.Core.Services
 
 		public void AddOrUpdate(T value)
 		{
-			Repository.Save(value);
+			if (Repository.Contains(value))
+			{
+				Repository.Save(value);
+			}
+			else
+			{
+				Repository.Add(value);
+			}
+
 			Repository.SaveChanges();
 		}
 
