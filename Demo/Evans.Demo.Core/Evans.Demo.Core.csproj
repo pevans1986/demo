@@ -46,6 +46,7 @@
     <Compile Include="Domain\IDomainEntity.cs" />
     <Compile Include="Domain\IModel.cs" />
     <Compile Include="Extensions\System\ObjectExtensions.cs" />
+    <Compile Include="Extensions\System\Reflection\MemberInfoExtensions.cs" />
     <Compile Include="Extensions\System\StringExtensions.cs" />
     <Compile Include="Extensions\System\TypeExtensions.cs" />
     <Compile Include="IoC\IContainer.cs" />

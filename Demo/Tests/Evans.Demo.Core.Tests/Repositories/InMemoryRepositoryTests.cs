@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Evans.Demo.Core.Domain;
 using Evans.Demo.Core.Repositories;
+using Evans.Demo.Core.Tests.TestObjects;
 
 using Moq;
 
@@ -13,17 +13,6 @@ using NUnit.Framework;
 
 namespace Evans.Demo.Core.Tests.Repositories
 {
-	public class Foo : IDomainEntity
-	{
-		#region Public Properties
-
-		public Guid Id { get; set; } = Guid.NewGuid();
-
-		public string Name { get; set; }
-
-		#endregion Public Properties
-	}
-
 	[TestFixture]
 	public class InMemoryRepositoryTests
 	{

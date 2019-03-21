@@ -213,6 +213,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TaskItemsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -312,6 +313,24 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Evans.Demo.Core.Web.Api\Evans.Demo.Core.Web.Api.csproj">
+      <Project>{1a13f433-29ba-4b1d-8268-0055090194b6}</Project>
+      <Name>Evans.Demo.Core.Web.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evans.Demo.Core\Evans.Demo.Core.csproj">
+      <Project>{6017e350-a76c-49d1-a409-7768f409016d}</Project>
+      <Name>Evans.Demo.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evans.Demo.Domain\Evans.Demo.Domain.csproj">
+      <Project>{e887bbb9-1060-4b2e-b1e6-81c7290691bc}</Project>
+      <Name>Evans.Demo.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evans.Demo.Services\Evans.Demo.Services.csproj">
+      <Project>{30678d7d-a2c7-4928-b87f-67d9b1c11dda}</Project>
+      <Name>Evans.Demo.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

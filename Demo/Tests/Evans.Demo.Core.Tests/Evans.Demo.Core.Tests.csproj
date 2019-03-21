@@ -68,9 +68,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\System\ObjectExtensionsTests.cs" />
+    <Compile Include="Extensions\System\Reflection\MemberInfoExtensionsTests.cs" />
     <Compile Include="Extensions\System\StringExtensionsTests.cs" />
     <Compile Include="Extensions\System\TypeExtensionsTests.cs" />
     <Compile Include="Repositories\InMemoryRepositoryTests.cs" />
+    <Compile Include="TestObjects\MemberDescriptionAttribute.cs" />
+    <Compile Include="TestObjects\Foo.cs" />
+    <Compile Include="TestObjects\KeyAttribute.cs" />
+    <Compile Include="TestObjects\UniqueAttribute.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
