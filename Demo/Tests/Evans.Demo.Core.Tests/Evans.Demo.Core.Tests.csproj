@@ -72,6 +72,8 @@
     <Compile Include="Extensions\System\StringExtensionsTests.cs" />
     <Compile Include="Extensions\System\TypeExtensionsTests.cs" />
     <Compile Include="Repositories\InMemoryRepositoryTests.cs" />
+    <Compile Include="TestObjects\SomeClassAttribute.cs" />
+    <Compile Include="TestObjects\FooParent.cs" />
     <Compile Include="TestObjects\MemberDescriptionAttribute.cs" />
     <Compile Include="TestObjects\Foo.cs" />
     <Compile Include="TestObjects\KeyAttribute.cs" />

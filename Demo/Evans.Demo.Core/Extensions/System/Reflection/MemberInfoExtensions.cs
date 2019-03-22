@@ -24,8 +24,8 @@ namespace Evans.Demo.Core.Extensions.System.Reflection
 		/// <para>
 		/// Note that this will only return a single instance of the attribute. If the attribute can
 		/// be defined multiple times, use <see cref="GetAttributes{T}(MemberInfo, bool)"/> instead.
-		/// If the attribute is defined more than once, the first one discovered will be returned.
 		/// </para>
+		/// <para>If the attribute is defined more than once, the first one discovered will be returned.</para>
 		/// </summary>
 		/// <typeparam name="TAttribute">Attribute type</typeparam>
 		/// <param name="self"></param>
@@ -34,7 +34,7 @@ namespace Evans.Demo.Core.Extensions.System.Reflection
 		public static TAttribute GetAttribute<TAttribute>(this MemberInfo self, bool inherit = false)
 			where TAttribute : Attribute
 		{
-			return self.GetAttributes<TAttribute>().FirstOrDefault();
+			return self.GetAttributes<TAttribute>(inherit).FirstOrDefault();
 		}
 
 		/// <summary>
@@ -50,7 +50,8 @@ namespace Evans.Demo.Core.Extensions.System.Reflection
 			where TAttribute : Attribute
 		{
 			var attribute = self.GetAttribute<TAttribute>(inherit);
-			return attribute ?? default(TAttribute);
+
+			return attribute ?? Activator.CreateInstance(typeof(TAttribute)) as TAttribute;
 		}
 
 		/// <summary>

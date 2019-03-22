@@ -1,15 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Evans.Demo.Core.Extensions.System.Reflection;
 using Evans.Demo.Core.Tests.TestObjects;
-using Moq;
+
 using NUnit.Framework;
-using System;
-using System.Reflection;
 
 namespace Evans.Demo.Core.Tests.Extensions.System.Reflection
 {
 	[TestFixture]
 	public class MemberInfoExtensionsTests
 	{
+		#region Public Methods
+
+		[Test]
+		public void GetAttribute_ShouldNotReturnInheritedAttributes()
+		{
+			var someClassAttribute = typeof(Foo).GetAttribute<SomeClassAttribute>(false);
+			Assert.IsNull(someClassAttribute);
+		}
+
 		[Test]
 		public void GetAttribute_ShouldReturnClassAttributes()
 		{
@@ -19,6 +32,25 @@ namespace Evans.Demo.Core.Tests.Extensions.System.Reflection
 
 			var uniqueAttribute = typeof(Foo).GetAttribute<UniqueAttribute>();
 			Assert.IsNull(uniqueAttribute);
+		}
+
+		[Test]
+		public void GetAttribute_ShouldReturnInheritedAttributes()
+		{
+			var someClassAttribute = typeof(Foo).GetAttribute<SomeClassAttribute>(true);
+			Assert.IsNotNull(someClassAttribute);
+		}
+
+		[Test]
+		public void GetAttribute_ShouldReturnMethodAttributes()
+		{
+			var nameMethod = typeof(Foo).GetMethod(nameof(Foo.GetName));
+			var nameUniqueAttribute = nameMethod.GetAttribute<UniqueAttribute>();
+			Assert.IsNull(nameUniqueAttribute);
+
+			var nameDescriptionAttribute = nameMethod.GetAttribute<MemberDescriptionAttribute>();
+			Assert.IsNotNull(nameDescriptionAttribute);
+			Assert.AreEqual(Foo.GetNameDescriptionValue, nameDescriptionAttribute.Description);
 		}
 
 		[Test]
@@ -33,76 +65,26 @@ namespace Evans.Demo.Core.Tests.Extensions.System.Reflection
 			Assert.AreEqual(Foo.NameDescriptionValue, nameDescriptionAttribute.Description);
 		}
 
-		// TODO Test attributes on methods
+		[Test]
+		public void GetAttributeOrDefault_ShouldReturnDefaultValues()
+		{
+			var nameMember = typeof(Foo).GetProperty(nameof(Foo.Name));
+			var nameUniqueAttribute = nameMember.GetAttributeOrDefault<UniqueAttribute>();
+			Assert.IsNotNull(nameUniqueAttribute);
+		}
 
-		//[Test]
-		//public void GetAttributeOrDefault_StateUnderTest_ExpectedBehavior()
-		//{
-		//	// Arrange
-		//	var unitUnderTest = this.CreateMemberInfoExtensions();
-		//	MemberInfo self = TODO;
-		//	bool inherit = TODO;
+		[Test]
+		public void HasAttribute_ShouldIdentifyMemberWithAttribute()
+		{
+			Assert.IsTrue(typeof(Foo).HasAttribute<MemberDescriptionAttribute>());
+		}
 
-		//	// Act
-		//	var result = unitUnderTest.GetAttributeOrDefault(
-		//		self,
-		//		inherit);
+		[Test]
+		public void HasAttribute_ShouldIdentifyMemberWithoutAttribute()
+		{
+			Assert.IsFalse(typeof(Foo).HasAttribute<SomeClassAttribute>());
+		}
 
-		//	// Assert
-		//	Assert.Fail();
-		//}
-
-		//[Test]
-		//public void GetAttributes_StateUnderTest_ExpectedBehavior()
-		//{
-		//	// Arrange
-		//	var unitUnderTest = this.CreateMemberInfoExtensions();
-		//	MemberInfo self = TODO;
-		//	bool inherit = TODO;
-
-		//	// Act
-		//	var result = unitUnderTest.GetAttributes(
-		//		self,
-		//		inherit);
-
-		//	// Assert
-		//	Assert.Fail();
-		//}
-
-		//[Test]
-		//public void HasAttribute_StateUnderTest_ExpectedBehavior()
-		//{
-		//	// Arrange
-		//	var unitUnderTest = this.CreateMemberInfoExtensions();
-		//	MemberInfo self = TODO;
-		//	bool inherit = TODO;
-
-		//	// Act
-		//	var result = unitUnderTest.HasAttribute(
-		//		self,
-		//		inherit);
-
-		//	// Assert
-		//	Assert.Fail();
-		//}
-
-		//[Test]
-		//public void HasAttribute_StateUnderTest_ExpectedBehavior1()
-		//{
-		//	// Arrange
-		//	var unitUnderTest = this.CreateMemberInfoExtensions();
-		//	MemberInfo self = TODO;
-		//	Type attributeType = TODO;
-		//	bool inherit = TODO;
-
-		//	// Act
-		//	var result = unitUnderTest.HasAttribute(
-		//		self,
-		//		attributeType,
-		//		inherit);
-
-		//	// Assert
-		//	Assert.Fail();
-		//}
+		#endregion Public Methods
 	}
 }
