@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -195,8 +197,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TaskItemsController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\ToDo\TaskItemsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -287,6 +288,10 @@
     <ProjectReference Include="..\Evans.Demo.Domain\Evans.Demo.Domain.csproj">
       <Project>{e887bbb9-1060-4b2e-b1e6-81c7290691bc}</Project>
       <Name>Evans.Demo.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evans.Demo.Repositories.EntityFramework\Evans.Demo.Repositories.EntityFramework.csproj">
+      <Project>{E60C0CFD-D12E-440C-A31E-C2B7C45A4A24}</Project>
+      <Name>Evans.Demo.Repositories.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Evans.Demo.Services\Evans.Demo.Services.csproj">
       <Project>{30678d7d-a2c7-4928-b87f-67d9b1c11dda}</Project>

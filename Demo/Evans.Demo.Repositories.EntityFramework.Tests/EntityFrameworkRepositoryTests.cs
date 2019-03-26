@@ -27,7 +27,7 @@ namespace Evans.Demo.Repositories.EntityFramework.Tests
 			IList<TaskItem> values = new List<TaskItem>();
 			contextMock.Setup(mock => mock.TaskItems).Returns(values);
 
-			var repo = new EntityFrameworkRepository<ToDoContext, TaskItem>(contextMock.Object);
+			var repo = new EntityFrameworkRepository<TaskItem>(contextMock.Object);
 			var item = new TaskItem();
 			repo.Add(item);
 

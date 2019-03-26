@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Evans.Demo.Core.Domain;
@@ -10,13 +11,12 @@ using Evans.Demo.Core.Repositories;
 
 namespace Evans.Demo.Repositories.EntityFramework
 {
-	public class EntityFrameworkRepository<TContext, TEntity> : Repository<TEntity>, IRepository<TEntity>
-		where TContext : DbContext
+	public class EntityFrameworkRepository<TEntity> : Repository<TEntity>, IRepository<TEntity>
 		where TEntity : class, IDomainEntity
 	{
 		#region Public Constructors
 
-		public EntityFrameworkRepository(TContext context)
+		public EntityFrameworkRepository(DbContext context)
 		{
 			Context = context;
 		}
@@ -25,7 +25,7 @@ namespace Evans.Demo.Repositories.EntityFramework
 
 		#region Protected Properties
 
-		protected virtual TContext Context { get; }
+		protected virtual DbContext Context { get; }
 
 		#endregion Protected Properties
 
@@ -77,6 +77,11 @@ namespace Evans.Demo.Repositories.EntityFramework
 		{
 			Context.SaveChanges();
 			return this;
+		}
+
+		public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+		{
+			return await Context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 		}
 
 		#endregion Public Methods

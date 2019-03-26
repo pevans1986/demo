@@ -10,7 +10,7 @@ using Evans.Demo.Core.Repositories;
 
 namespace Evans.Demo.Core.Services
 {
-	public abstract class Service<T> : IService<T> 
+	public class Service<T> : IService<T>
 		where T : IDomainEntity
 	{
 		#region Private Fields
@@ -19,14 +19,14 @@ namespace Evans.Demo.Core.Services
 
 		#endregion Private Fields
 
-		#region Protected Constructors
+		#region Public Constructors
 
-		protected Service(IRepository<T> repository)
+		public Service(IRepository<T> repository)
 		{
 			Repository = repository;
 		}
 
-		#endregion Protected Constructors
+		#endregion Public Constructors
 
 		#region Protected Properties
 

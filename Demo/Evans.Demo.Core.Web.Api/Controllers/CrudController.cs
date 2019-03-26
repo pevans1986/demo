@@ -10,11 +10,11 @@ using Evans.Demo.Core.Services;
 
 namespace Evans.Demo.Core.Web.Api.Controllers
 {
-	public class CrudController<T> : ApiController where T : IDomainEntity
+	public class CrudController<TEntity> : ApiController where TEntity : IDomainEntity
 	{
 		#region Public Constructors
 
-		public CrudController(IService<T> service)
+		public CrudController(IService<TEntity> service)
 		{
 			Service = service;
 		}
@@ -23,7 +23,7 @@ namespace Evans.Demo.Core.Web.Api.Controllers
 
 		#region Protected Properties
 
-		protected IService<T> Service { get; }
+		protected IService<TEntity> Service { get; }
 
 		#endregion Protected Properties
 
@@ -78,7 +78,7 @@ namespace Evans.Demo.Core.Web.Api.Controllers
 
 		[HttpPost]
 		// POST api/<controller>
-		public IHttpActionResult Post(T value)
+		public IHttpActionResult Post(TEntity value)
 		{
 			try
 			{
@@ -95,7 +95,7 @@ namespace Evans.Demo.Core.Web.Api.Controllers
 
 		[HttpPut]
 		// PUT api/<controller>/<guid>
-		public IHttpActionResult Put(Guid id, T value)
+		public IHttpActionResult Put(Guid id, TEntity value)
 		{
 			try
 			{

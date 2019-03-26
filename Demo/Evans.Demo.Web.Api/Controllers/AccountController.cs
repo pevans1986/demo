@@ -30,12 +30,12 @@ namespace Evans.Demo.Web.Api.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
-        {
-            UserManager = userManager;
-            AccessTokenFormat = accessTokenFormat;
-        }
+        //public AccountController(ApplicationUserManager userManager,
+        //    ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+        //{
+        //    UserManager = userManager;
+        //    AccessTokenFormat = accessTokenFormat;
+        //}
 
         public ApplicationUserManager UserManager
         {

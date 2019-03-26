@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Evans.Demo.Core.Repositories
 {
@@ -21,6 +23,8 @@ namespace Evans.Demo.Core.Repositories
 		IRepository<TModel> Save(TModel model);
 
 		IRepository<TModel> SaveChanges();
+
+		Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
 		#endregion Public Methods
 	}
