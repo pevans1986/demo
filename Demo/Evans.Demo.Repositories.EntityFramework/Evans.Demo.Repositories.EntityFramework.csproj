@@ -52,6 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\DbEntityValidationExceptionExtensions.cs" />
+    <Compile Include="Migrations\201903262315028_InitialDbCreation.cs" />
+    <Compile Include="Migrations\201903262315028_InitialDbCreation.Designer.cs">
+      <DependentUpon>201903262315028_InitialDbCreation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ToDo\ToDoContext.cs" />
     <Compile Include="EntityFrameworkRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +74,11 @@
       <Project>{E887BBB9-1060-4B2E-B1E6-81C7290691BC}</Project>
       <Name>Evans.Demo.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903262315028_InitialDbCreation.resx">
+      <DependentUpon>201903262315028_InitialDbCreation.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

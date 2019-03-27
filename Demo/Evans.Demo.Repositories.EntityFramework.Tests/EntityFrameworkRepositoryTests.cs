@@ -9,8 +9,7 @@ using Evans.Demo.Domain.ToDo;
 using Evans.Demo.Repositories.EntityFramework.ToDo;
 
 using Moq;
-using Moq.EntityFramework.Helpers;
-
+using Moq.EntityFramework;
 using NUnit.Framework;
 
 namespace Evans.Demo.Repositories.EntityFramework.Tests
@@ -23,9 +22,8 @@ namespace Evans.Demo.Repositories.EntityFramework.Tests
 		[Test]
 		public void Add_ShouldSetEntityState()
 		{
-			var contextMock = new Mock<ToDoContext>();
-			IList<TaskItem> values = new List<TaskItem>();
-			contextMock.Setup(mock => mock.TaskItems).Returns(values);
+			var contextMock = DbContextMockFactory.Create<TestContext>();
+			contextMock.MockSetFor<TaskItem>(new List<TaskItem>());
 
 			var repo = new EntityFrameworkRepository<TaskItem>(contextMock.Object);
 			var item = new TaskItem();

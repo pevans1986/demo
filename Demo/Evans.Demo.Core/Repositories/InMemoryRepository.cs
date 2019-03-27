@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Evans.Demo.Core.Domain;
@@ -74,6 +75,11 @@ namespace Evans.Demo.Core.Repositories
 		}
 
 		public override IRepository<TEntity> SaveChanges() => this;
+
+		public async Task<IRepository<TEntity>> SaveChangesAsync(CancellationToken cancellationToken = default)
+		{
+			return await Task.Run(() => SaveChanges()).ConfigureAwait(false);
+		}
 
 		#endregion Public Methods
 	}

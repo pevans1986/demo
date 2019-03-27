@@ -51,8 +51,8 @@
     <Reference Include="Moq.AutoMock, Version=1.2.0.120, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.AutoMock.1.2.0.120\lib\net45\Moq.AutoMock.dll</HintPath>
     </Reference>
-    <Reference Include="Moq.EntityFramework.Helpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.EntityFramework.Helpers.1.0.0\lib\net452\Moq.EntityFramework.Helpers.dll</HintPath>
+    <Reference Include="Moq.EntityFramework, Version=1.0.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.EntityFramework.1.0.10.0\lib\net452\Moq.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=3.11.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.11.0\lib\net45\nunit.framework.dll</HintPath>
@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityFrameworkRepositoryTests.cs" />
+    <Compile Include="TestContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Evans.Demo.Core\Evans.Demo.Core.csproj">

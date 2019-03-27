@@ -79,9 +79,10 @@ namespace Evans.Demo.Repositories.EntityFramework
 			return this;
 		}
 
-		public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+		public async Task<IRepository<TEntity>> SaveChangesAsync(CancellationToken cancellationToken = default)
 		{
-			return await Context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+			await Context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+			return this;
 		}
 
 		#endregion Public Methods

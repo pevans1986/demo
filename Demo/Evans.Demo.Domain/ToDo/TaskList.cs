@@ -8,15 +8,13 @@ using Evans.Demo.Core.Domain;
 
 namespace Evans.Demo.Domain.ToDo
 {
-	public class TaskList : IDomainEntity
+	public class TaskList : DomainEntity
 	{
 		#region Public Properties
 
 		public string Description { get; set; }
 
-		public Guid Id { get; set; }
-
-		public virtual List<TaskItem> Items { get; set; }
+		public virtual List<TaskItem> Items { get; set; } = new List<TaskItem>();
 
 		public virtual ItemStatus Status { get; set; }
 

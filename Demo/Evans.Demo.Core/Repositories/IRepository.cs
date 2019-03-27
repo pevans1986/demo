@@ -24,7 +24,7 @@ namespace Evans.Demo.Core.Repositories
 
 		IRepository<TModel> SaveChanges();
 
-		Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+		Task<IRepository<TModel>> SaveChangesAsync(CancellationToken cancellationToken = default);
 
 		#endregion Public Methods
 	}
