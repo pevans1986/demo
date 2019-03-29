@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 
 using Microsoft.Owin.Security.OAuth;
+
+using Newtonsoft.Json;
 
 namespace Evans.Demo.Web.Api
 {
@@ -25,8 +28,29 @@ namespace Evans.Demo.Web.Api
 				routeTemplate: "api/{controller}/{id}",
 				defaults: new { id = RouteParameter.Optional }
 			);
+
+			RegisterFormatters(config);
 		}
 
 		#endregion Public Methods
+
+		#region Private Methods
+
+		private static void RegisterFormatters(HttpConfiguration config)
+		{
+			var formatter = config.Formatters.OfType<JsonMediaTypeFormatter>().FirstOrDefault();
+			if (formatter == null)
+			{
+				formatter = new JsonMediaTypeFormatter();
+			}
+
+			config.Formatters.Clear();
+
+			formatter.Indent = true;
+			formatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+			config.Formatters.Add(formatter);
+		}
+
+		#endregion Private Methods
 	}
 }
