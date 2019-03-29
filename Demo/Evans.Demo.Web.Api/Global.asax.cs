@@ -19,7 +19,6 @@ namespace Evans.Demo.Web.Api
 			GlobalConfiguration.Configure(WebApiConfig.Register);
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
-			BundleConfig.RegisterBundles(BundleTable.Bundles);
 		}
 
 		#endregion Protected Methods
