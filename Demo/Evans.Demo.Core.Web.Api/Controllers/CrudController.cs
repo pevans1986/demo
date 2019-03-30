@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Text;
+using System.Linq;
+using System.Collections.Generic;
 using System.Web.Http;
 
 using Evans.Demo.Core.Domain;
@@ -30,12 +30,22 @@ namespace Evans.Demo.Core.Web.Api.Controllers
 		#region Public Methods
 
 		[HttpDelete]
-		// DELETE api/<controller>/<guid>
-		public virtual IHttpActionResult Delete(Guid id)
+		/// <summary>
+		/// Deletes the object identified by the given <paramref name="id"/> value.
+		/// </summary>
+		/// <param name="id">Entity key value</param>
+		/// <returns></returns>
+		public virtual async Task<IHttpActionResult> DeleteAsync(Guid id)
 		{
 			try
 			{
-				Service.Delete(id);
+				var entity = await Service.GetByIdAsync(id).ConfigureAwait(false);
+				if (entity == null)
+				{
+					return NotFound();
+				}
+
+				Service.Delete(entity);
 				return Ok();
 			}
 			catch (Exception exception)
@@ -46,13 +56,11 @@ namespace Evans.Demo.Core.Web.Api.Controllers
 		}
 
 		[HttpGet]
-		// GET api/<controller>
 		public virtual async Task<IHttpActionResult> GetAsync()
 		{
 			try
 			{
 				var results = await Service.GetAllAsync().ConfigureAwait(false);
-				//return Ok(Service.GetAll());
 				return Ok(results);
 			}
 			catch (Exception exception)
@@ -63,7 +71,6 @@ namespace Evans.Demo.Core.Web.Api.Controllers
 		}
 
 		[HttpGet]
-		// GET api/<controller>/<guid>
 		public virtual async Task<IHttpActionResult> GetAsync(Guid id)
 		{
 			var result = await Service.GetByIdAsync(id).ConfigureAwait(false);
@@ -77,7 +84,6 @@ namespace Evans.Demo.Core.Web.Api.Controllers
 		}
 
 		[HttpPost]
-		// POST api/<controller>
 		public IHttpActionResult Post(TEntity value)
 		{
 			try
@@ -94,7 +100,6 @@ namespace Evans.Demo.Core.Web.Api.Controllers
 		}
 
 		[HttpPut]
-		// PUT api/<controller>/<guid>
 		public IHttpActionResult Put(Guid id, TEntity value)
 		{
 			try
