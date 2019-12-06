@@ -12,7 +12,7 @@ namespace Evans.Demo.Repositories.EntityFramework.ToDo
 	{
 		#region Public Properties
 		
-		public virtual DbSet<TaskItem> TaskItems { get; set; }
+		public virtual DbSet<TaskListItem> TaskItems { get; set; }
 
 		public virtual DbSet<TaskList> TaskLists { get; set; }
 

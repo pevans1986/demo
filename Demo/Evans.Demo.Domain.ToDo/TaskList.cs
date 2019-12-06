@@ -14,7 +14,7 @@ namespace Evans.Demo.Domain.ToDo
 
 		public string Description { get; set; }
 
-		public virtual List<TaskItem> Items { get; set; } = new List<TaskItem>();
+		public virtual List<TaskListItem> Items { get; set; } = new List<TaskListItem>();
 
 		public virtual ItemStatus Status { get; set; }
 

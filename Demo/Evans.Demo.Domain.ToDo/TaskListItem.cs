@@ -9,7 +9,7 @@ using Evans.Demo.Core.Domain;
 
 namespace Evans.Demo.Domain.ToDo
 {
-	public class TaskItem : DomainEntity
+	public class TaskListItem : DomainEntity
 	{
 		#region Public Properties
 

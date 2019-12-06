@@ -23,10 +23,10 @@ namespace Evans.Demo.Repositories.EntityFramework.Tests
 		public void Add_ShouldSetEntityState()
 		{
 			var contextMock = DbContextMockFactory.Create<TestContext>();
-			contextMock.MockSetFor<TaskItem>(new List<TaskItem>());
+			contextMock.MockSetFor<TaskListItem>(new List<TaskListItem>());
 
-			var repo = new EntityFrameworkRepository<TaskItem>(contextMock.Object);
-			var item = new TaskItem();
+			var repo = new EntityFrameworkRepository<TaskListItem>(contextMock.Object);
+			var item = new TaskListItem();
 			repo.Add(item);
 
 			var state = contextMock.Object.Entry(item).State;
