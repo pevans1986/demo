@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.438
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Core", "Evans.Demo.Core\Evans.Demo.Core.csproj", "{6017E350-A76C-49D1-A409-7768F409016D}"
 EndProject
@@ -20,6 +20,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Services", "Evans.Demo.Services\Evans.Demo.Services.csproj", "{30678D7D-A2C7-4928-B87F-67D9B1C11DDA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Repositories.EntityFramework.Tests", "Evans.Demo.Repositories.EntityFramework.Tests\Evans.Demo.Repositories.EntityFramework.Tests.csproj", "{C155DD6B-668E-4922-8263-E8AF7F2CFDC5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{C2FAEDED-7608-44CF-A02E-140791E397DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Domain.ToDo", "Evans.Demo.Domain.ToDo\Evans.Demo.Domain.ToDo.csproj", "{BFE6B24E-E809-403E-A012-4A8D84C55E71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,13 +63,19 @@ Global
 		{C155DD6B-668E-4922-8263-E8AF7F2CFDC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C155DD6B-668E-4922-8263-E8AF7F2CFDC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C155DD6B-668E-4922-8263-E8AF7F2CFDC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFE6B24E-E809-403E-A012-4A8D84C55E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFE6B24E-E809-403E-A012-4A8D84C55E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFE6B24E-E809-403E-A012-4A8D84C55E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFE6B24E-E809-403E-A012-4A8D84C55E71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8EDF4429-251A-416D-BB68-93F227191BCF} = {EC92D54A-18E9-4166-B013-9BDBF0BDD044}
+		{E887BBB9-1060-4B2E-B1E6-81C7290691BC} = {C2FAEDED-7608-44CF-A02E-140791E397DA}
 		{C155DD6B-668E-4922-8263-E8AF7F2CFDC5} = {EC92D54A-18E9-4166-B013-9BDBF0BDD044}
+		{BFE6B24E-E809-403E-A012-4A8D84C55E71} = {C2FAEDED-7608-44CF-A02E-140791E397DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {29E9E0DD-CA74-4E3D-A01F-98EDAF133D48}

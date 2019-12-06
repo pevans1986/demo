@@ -46,9 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ToDo\ItemStatus.cs" />
-    <Compile Include="ToDo\TaskItem.cs" />
-    <Compile Include="ToDo\TaskList.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Evans.Demo.Core\Evans.Demo.Core.csproj">
