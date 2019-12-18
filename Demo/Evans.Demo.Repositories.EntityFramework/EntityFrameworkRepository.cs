@@ -31,10 +31,9 @@ namespace Evans.Demo.Repositories.EntityFramework
 
 		#region Public Methods
 
-		public override IRepository<TEntity> Add(TEntity entity)
+		public override void Add(TEntity entity)
 		{
-			Context.Entry(entity).State = EntityState.Added;
-			return this;
+			Context.Set<TEntity>().Add(entity);
 		}
 
 		public override bool Contains(TEntity entity)
@@ -42,10 +41,9 @@ namespace Evans.Demo.Repositories.EntityFramework
 			return Context.Entry(entity) != null;
 		}
 
-		public override IRepository<TEntity> Delete(TEntity entity)
+		public override void Delete(TEntity entity)
 		{
 			Context.Entry(entity).State = EntityState.Deleted;
-			return this;
 		}
 
 		public override void Dispose()
@@ -67,22 +65,20 @@ namespace Evans.Demo.Repositories.EntityFramework
 				.AsQueryable();
 		}
 
-		public override IRepository<TEntity> Save(TEntity model)
+		public override void Save(TEntity model)
 		{
 			Context.Entry(model).State = EntityState.Modified;
-			return this;
 		}
 
-		public override IRepository<TEntity> SaveChanges()
+		public override int SaveChanges()
 		{
-			Context.SaveChanges();
-			return this;
+			return Context.SaveChanges();
 		}
 
-		public async Task<IRepository<TEntity>> SaveChangesAsync(CancellationToken cancellationToken = default)
+		public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
 		{
-			await Context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-			return this;
+			int result = await Context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+			return result;
 		}
 
 		#endregion Public Methods

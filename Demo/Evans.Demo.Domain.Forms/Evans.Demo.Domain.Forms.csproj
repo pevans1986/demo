@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BFE6B24E-E809-403E-A012-4A8D84C55E71}</ProjectGuid>
+    <ProjectGuid>{20DC8445-2BC2-472C-86E9-EE55D7ABA6F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Evans.Demo.Domain.ToDo</RootNamespace>
-    <AssemblyName>Evans.Demo.Domain.ToDo</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>Evans.Demo.Domain.Forms</RootNamespace>
+    <AssemblyName>Evans.Demo.Domain.Forms</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,17 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ItemStatus.cs" />
-    <Compile Include="IToDoContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaskListItem.cs" />
-    <Compile Include="TaskList.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Evans.Demo.Core\Evans.Demo.Core.csproj">
-      <Project>{6017e350-a76c-49d1-a409-7768f409016d}</Project>
-      <Name>Evans.Demo.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Evans.Demo.Core.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -10,21 +11,23 @@ namespace Evans.Demo.Core.Repositories
 	{
 		#region Public Methods
 
-		IRepository<TModel> Add(TModel entity);
+		void Add(TModel entity);
 
 		bool Contains(TModel entity);
 
-		IRepository<TModel> Delete(TModel entity);
+		void Delete(TModel entity);
 
 		List<TModel> GetAll();
 
 		IQueryable<TModel> Query();
 
-		IRepository<TModel> Save(TModel model);
+		void Save(TModel model);
 
-		IRepository<TModel> SaveChanges();
+		int SaveChanges();
 
-		Task<IRepository<TModel>> SaveChangesAsync(CancellationToken cancellationToken = default);
+		Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+
+		void Subscribe(IChangeSubscriber subscriber);
 
 		#endregion Public Methods
 	}

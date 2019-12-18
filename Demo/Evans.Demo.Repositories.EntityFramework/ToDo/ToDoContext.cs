@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Evans.Demo.Repositories.EntityFramework.ToDo
 {
-	public class ToDoContext : DbContext
+	public class ToDoContext : DbContext //, IToDoContext
 	{
 		#region Public Properties
 		
@@ -25,3 +25,4 @@ namespace Evans.Demo.Repositories.EntityFramework.ToDo
 		#endregion Public Constructors
 	}
 }
+

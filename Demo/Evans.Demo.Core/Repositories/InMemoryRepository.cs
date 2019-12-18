@@ -21,14 +21,12 @@ namespace Evans.Demo.Core.Repositories
 
 		#region Public Methods
 
-		public override IRepository<TEntity> Add(TEntity entity)
+		public override void Add(TEntity entity)
 		{
 			if (!Contains(entity))
 			{
 				_data.Add(entity);
 			}
-
-			return this;
 		}
 
 		public override bool Contains(TEntity entity)
@@ -41,7 +39,7 @@ namespace Evans.Demo.Core.Repositories
 			return Query().Any(item => item.Id == entity.Id);
 		}
 
-		public override IRepository<TEntity> Delete(TEntity entity)
+		public override void Delete(TEntity entity)
 		{
 			if (_data.Contains(entity))
 			{
@@ -51,8 +49,6 @@ namespace Evans.Demo.Core.Repositories
 			{
 				_data.RemoveAll(item => item.Id == entity.Id);
 			}
-
-			return this;
 		}
 
 		public override void Dispose() { }
@@ -61,7 +57,7 @@ namespace Evans.Demo.Core.Repositories
 
 		public override IQueryable<TEntity> Query() => _data.AsQueryable();
 
-		public override IRepository<TEntity> Save(TEntity model)
+		public override void Save(TEntity model)
 		{
 			var entity = Query().FirstOrDefault(entry => entry.Id == model.Id);
 			if (entity != null)
@@ -70,15 +66,14 @@ namespace Evans.Demo.Core.Repositories
 			}
 
 			GetAll().Add(model);
-
-			return this;
 		}
 
-		public override IRepository<TEntity> SaveChanges() => this;
+		public override int SaveChanges() => 0;
 
-		public async Task<IRepository<TEntity>> SaveChangesAsync(CancellationToken cancellationToken = default)
+		public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
 		{
-			return await Task.Run(() => SaveChanges()).ConfigureAwait(false);
+			int result = await Task.Run(() => SaveChanges()).ConfigureAwait(false);
+			return result;
 		}
 
 		#endregion Public Methods

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Config\IBootstrap.cs" />
     <Compile Include="Domain\DomainEntity.cs" />
+    <Compile Include="Domain\IChangeSubscriber.cs" />
     <Compile Include="Domain\IDomainEntity.cs" />
     <Compile Include="Domain\IModel.cs" />
     <Compile Include="Extensions\System\ObjectExtensions.cs" />

@@ -12,13 +12,15 @@ namespace Evans.Demo.Core.Repositories
 	public abstract class Repository<TEntity>
 		where TEntity : IDomainEntity
 	{
+		protected List<IChangeSubscriber> Subscribers { get; set; } = new List<IChangeSubscriber>();
+
 		#region Public Methods
 
-		public abstract IRepository<TEntity> Add(TEntity entity);
+		public abstract void Add(TEntity entity);
 
 		public abstract bool Contains(TEntity entity);
 
-		public abstract IRepository<TEntity> Delete(TEntity entity);
+		public abstract void Delete(TEntity entity);
 
 		public abstract void Dispose();
 
@@ -26,10 +28,31 @@ namespace Evans.Demo.Core.Repositories
 
 		public abstract IQueryable<TEntity> Query();
 
-		public abstract IRepository<TEntity> Save(TEntity model);
+		public abstract void Save(TEntity model);
 
-		public abstract IRepository<TEntity> SaveChanges();
+		public abstract int SaveChanges();
+
+		public void Subscribe(IChangeSubscriber subscriber)
+		{
+			// TODO Confirm item is not already in list
+			Subscribers.Add(subscriber);
+		}
 
 		#endregion Public Methods
+
+		protected void NotifyCreated<T>(IEnumerable<T> entities) where T : IDomainEntity
+		{
+			Subscribers.ForEach(s => s.OnCreated(entities));
+		}
+
+		protected void NotifyDeleted<T>(IEnumerable<T> entities) where T : IDomainEntity
+		{
+			Subscribers.ForEach(s => s.OnDeleted(entities));
+		}
+
+		protected void NotifyUpdated<T>(IEnumerable<T> entities) where T : IDomainEntity
+		{
+			Subscribers.ForEach(s => s.OnUpdated(entities));
+		}
 	}
 }
