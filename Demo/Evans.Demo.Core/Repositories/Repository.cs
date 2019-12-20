@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Evans.Demo.Core.Domain;
+using Evans.Demo.Core.Extensions.System.Collections.Generic;
 
 namespace Evans.Demo.Core.Repositories
 {
@@ -12,7 +13,11 @@ namespace Evans.Demo.Core.Repositories
 	public abstract class Repository<TEntity>
 		where TEntity : IDomainEntity
 	{
+		#region Protected Properties
+
 		protected List<IChangeSubscriber> Subscribers { get; set; } = new List<IChangeSubscriber>();
+
+		#endregion Protected Properties
 
 		#region Public Methods
 
@@ -21,8 +26,6 @@ namespace Evans.Demo.Core.Repositories
 		public abstract bool Contains(TEntity entity);
 
 		public abstract void Delete(TEntity entity);
-
-		public abstract void Dispose();
 
 		public virtual List<TEntity> GetAll() => Query().ToList();
 
@@ -34,11 +37,14 @@ namespace Evans.Demo.Core.Repositories
 
 		public void Subscribe(IChangeSubscriber subscriber)
 		{
-			// TODO Confirm item is not already in list
-			Subscribers.Add(subscriber);
+			Subscribers.AddIfUnique(subscriber);
 		}
 
 		#endregion Public Methods
+
+		#region Protected Methods
+
+		protected abstract void Dispose(bool isDisposing);
 
 		protected void NotifyCreated<T>(IEnumerable<T> entities) where T : IDomainEntity
 		{
@@ -54,5 +60,7 @@ namespace Evans.Demo.Core.Repositories
 		{
 			Subscribers.ForEach(s => s.OnUpdated(entities));
 		}
+
+		#endregion Protected Methods
 	}
 }

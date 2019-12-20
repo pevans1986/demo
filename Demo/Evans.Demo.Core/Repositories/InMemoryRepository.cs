@@ -9,7 +9,7 @@ using Evans.Demo.Core.Domain;
 
 namespace Evans.Demo.Core.Repositories
 {
-	public class InMemoryRepository<TEntity> : Repository<TEntity>, IRepository<TEntity> 
+	public class InMemoryRepository<TEntity> : Repository<TEntity>, IRepository<TEntity>
 		where TEntity : IDomainEntity
 	{
 		#region Private Fields
@@ -51,7 +51,10 @@ namespace Evans.Demo.Core.Repositories
 			}
 		}
 
-		public override void Dispose() { }
+		public void Dispose()
+		{
+			Dispose(true);
+		}
 
 		public override List<TEntity> GetAll() => _data;
 
@@ -77,5 +80,11 @@ namespace Evans.Demo.Core.Repositories
 		}
 
 		#endregion Public Methods
+
+		#region Protected Methods
+
+		protected override void Dispose(bool isDisposing) { }
+
+		#endregion Protected Methods
 	}
 }

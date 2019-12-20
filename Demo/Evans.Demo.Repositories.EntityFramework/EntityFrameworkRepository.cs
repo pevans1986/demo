@@ -46,9 +46,9 @@ namespace Evans.Demo.Repositories.EntityFramework
 			Context.Entry(entity).State = EntityState.Deleted;
 		}
 
-		public override void Dispose()
+		public void Dispose()
 		{
-			Context?.Dispose();
+			Dispose(true);
 		}
 
 		public override List<TEntity> GetAll()
@@ -84,6 +84,14 @@ namespace Evans.Demo.Repositories.EntityFramework
 		#endregion Public Methods
 
 		#region Protected Methods
+
+		protected override void Dispose(bool isDisposing)
+		{
+			if (isDisposing)
+			{
+				Context?.Dispose();
+			}
+		}
 
 		protected virtual DbContext GetDbContext()
 		{
