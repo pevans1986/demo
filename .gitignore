@@ -268,3 +268,5 @@ __pycache__/
 /Demo/Tests/Evans.Demo.Core.Tests/.vshistory/Evans.Demo.Core.Tests.csproj
 /Demo/UI/Evans.Demo.Web.Mvc.Tests/Controllers/.vshistory/HomeControllerTest.cs
 /Demo/Tests/Evans.Demo.Core.Tests/Extensions/System/Collections/Generic/.vshistory/ListExtensionsTests.cs
+/Demo/Evans.Demo.Core/Extensions/System/Collections/Generic/.vshistory/IListExtensions.cs
+/Demo/Tests/Evans.Demo.Core.Tests/Extensions/System/Collections/Generic/.vshistory/IListExtensionsTests.cs

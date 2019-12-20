@@ -7,11 +7,11 @@ using System.Collections.Generic;
 namespace Evans.Demo.Core.Tests.Extensions.System.Collections.Generic
 {
 	[TestFixture]
-	public class ListExtensionsTests
+	public class IListExtensionsTests
 	{
 		#region Private Fields
 
-		private List<string> _list;
+		private IList<string> _list;
 
 		#endregion Private Fields
 

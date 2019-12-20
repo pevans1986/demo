@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Evans.Demo.Core.Extensions.System.Collections.Generic
 {
-	public static class ListExtensions
+	public static class IListExtensions
 	{
 		#region Public Methods
 
-		public static void AddIfUnique<T>(this List<T> self, T item)
+		public static void AddIfUnique<T>(this IList<T> self, T item)
 		{
 			if (!self.Contains(item))
 			{

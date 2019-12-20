@@ -50,7 +50,7 @@
     <Compile Include="Domain\IChangeSubscriber.cs" />
     <Compile Include="Domain\IDomainEntity.cs" />
     <Compile Include="Domain\IModel.cs" />
-    <Compile Include="Extensions\System\Collections\Generic\ListExtensions.cs" />
+    <Compile Include="Extensions\System\Collections\Generic\IListExtensions.cs" />
     <Compile Include="Extensions\System\ObjectExtensions.cs" />
     <Compile Include="Extensions\System\Reflection\MemberInfoExtensions.cs" />
     <Compile Include="Extensions\System\StringExtensions.cs" />
