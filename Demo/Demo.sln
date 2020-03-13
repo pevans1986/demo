@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Domain.Forms", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Domain.Chat", "Evans.Demo.Domain.Chat\Evans.Demo.Domain.Chat.csproj", "{8279F6E1-69CB-48DF-B6BA-7DEB888696D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Core.Web.Mvc", "Evans.Demo.Core.Web.Mvc\Evans.Demo.Core.Web.Mvc.csproj", "{029F425E-F19B-40C1-9C15-9F7FC19AB080}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{8279F6E1-69CB-48DF-B6BA-7DEB888696D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8279F6E1-69CB-48DF-B6BA-7DEB888696D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8279F6E1-69CB-48DF-B6BA-7DEB888696D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{029F425E-F19B-40C1-9C15-9F7FC19AB080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{029F425E-F19B-40C1-9C15-9F7FC19AB080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{029F425E-F19B-40C1-9C15-9F7FC19AB080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{029F425E-F19B-40C1-9C15-9F7FC19AB080}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
