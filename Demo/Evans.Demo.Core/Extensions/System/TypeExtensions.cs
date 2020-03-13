@@ -38,7 +38,7 @@ namespace Evans.Demo.Core.Extensions.System
 				return false;
 			}
 
-			return self.GetInterface(interfaceType.Name, true) != null;
+			return self.GetInterface(interfaceType.Name, ignoreCase: true) != null;
 		}
 
 		#endregion Public Methods

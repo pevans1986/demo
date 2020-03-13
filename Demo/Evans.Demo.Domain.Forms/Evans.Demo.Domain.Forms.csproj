@@ -41,7 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FieldDescriptor.cs" />
+    <Compile Include="FieldType.cs" />
+    <Compile Include="Form.cs" />
+    <Compile Include="FormField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Evans.Demo.Core\Evans.Demo.Core.csproj">
+      <Project>{6017E350-A76C-49D1-A409-7768F409016D}</Project>
+      <Name>Evans.Demo.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

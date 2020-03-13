@@ -72,7 +72,6 @@
   <ItemGroup>
     <Compile Include="EntityFrameworkRepositoryTests.cs" />
     <Compile Include="MockDbSet.cs" />
-    <Compile Include="TestContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Evans.Demo.Core\Evans.Demo.Core.csproj">

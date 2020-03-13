@@ -121,6 +121,7 @@ namespace Evans.Demo.Core.Extensions.System.Tests
 			Assert.AreEqual("SplitTitleCase".ToSeparateWords(), "Split Title Case");
 		}
 
+
 		[Test]
 		public void Truncate_ShouldReturnTruncatedString()
 		{

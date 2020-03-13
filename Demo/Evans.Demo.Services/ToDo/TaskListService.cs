@@ -12,27 +12,33 @@ namespace Evans.Demo.Services.ToDo
 {
 	public class TaskListService : Service<TaskList>
 	{
-		#region Protected Constructors
+		#region Constructors
 
 		protected TaskListService(IRepository<TaskList> repository)
 			: base(repository)
 		{
 		}
 
-		#endregion Protected Constructors
+		#endregion Constructors
 
-		#region Public Methods
+		#region Methods
+
+		public void Complete(TaskList taskList)
+		{
+			CompleteAllTasks(taskList);
+			taskList.Status = ItemStatus.Complete;
+		}
 
 		public void CompleteAllTasks(TaskList taskList)
 		{
-			taskList.Items.ForEach(item =>
-			{
-				item.Status = ItemStatus.Complete;
-			});
-
-			Repository.SaveChanges();
+			taskList.Items.ForEach(CompleteTask);
 		}
 
-		#endregion Public Methods
+		public void CompleteTask(TaskListItem item)
+		{
+			item.Status = ItemStatus.Complete;
+		}
+
+		#endregion Methods
 	}
 }

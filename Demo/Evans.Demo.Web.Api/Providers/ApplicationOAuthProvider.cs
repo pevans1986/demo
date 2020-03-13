@@ -73,11 +73,11 @@ namespace Evans.Demo.Web.Api.Providers
 
         public override Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
         {
-            if (context.ClientId == _publicClientId)
+            if (string.Equals(context.ClientId, _publicClientId, StringComparison.OrdinalIgnoreCase))
             {
                 Uri expectedRootUri = new Uri(context.Request.Uri, "/");
 
-                if (expectedRootUri.AbsoluteUri == context.RedirectUri)
+                if (string.Equals(expectedRootUri.AbsoluteUri, context.RedirectUri, StringComparison.OrdinalIgnoreCase))
                 {
                     context.Validated();
                 }
