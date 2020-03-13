@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,6 +40,31 @@ namespace Evans.Demo.Core.Extensions.System
 			}
 
 			return self.GetInterface(interfaceType.Name, ignoreCase: true) != null;
+		}
+
+		/// <summary>
+		/// Creates a new instance of this Type. This uses <see cref="Activator.CreateInstance(Type)"/>
+		/// but has additional logic for handling special cases that would otherwise cause an exception.
+		/// </summary>
+		/// <param name="self"></param>
+		/// <returns></returns>
+		public static object New(this Type self)
+		{
+			// Check if the type (self) has a default parameterless constructor
+			if (self.GetConstructor(Type.EmptyTypes) != null)
+			{
+				return Activator.CreateInstance(self);
+			}
+
+			// The additional parameter values will handle cases where the class does not have a default
+			// parameterless constructor.
+			return Activator.CreateInstance(
+				self,
+				(BindingFlags.CreateInstance | BindingFlags.Public | BindingFlags.Instance | BindingFlags.OptionalParamBinding),
+				null,
+				new[] { Type.Missing },
+				null
+			);
 		}
 
 		#endregion Public Methods
