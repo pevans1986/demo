@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Evans.Demo.Core.IoC
 {
+	// TODO Move to separate class library (Evans.Demo.Core.IoC.SimpleInjector
 	public class SimpleInjectorContainer : Container, IContainer
 	{
 		#region Public Constructors
@@ -109,10 +110,10 @@ namespace Evans.Demo.Core.IoC
 			return true;
 		}
 
-		IContainer IContainer.RegisterSingleton<TSingleton>(TSingleton instance)
-		{
-			throw new NotImplementedException();
-		}
+		//IContainer IContainer.RegisterSingleton<TSingleton>(TSingleton instance)
+		//{
+		//	throw new NotImplementedException();
+		//}
 
 		#endregion Public Methods
 	}

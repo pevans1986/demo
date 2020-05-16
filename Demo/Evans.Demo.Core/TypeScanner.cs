@@ -1,11 +1,12 @@
-﻿using Evans.Demo.Core.Extensions.System.Collections.Generic;
-using Evans.Demo.Core.Extensions.System.Reflection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+
+using Evans.Demo.Core.Extensions.System;
+using Evans.Demo.Core.Extensions.System.Reflection;
 
 namespace Evans.Demo.Core
 {
@@ -23,13 +24,13 @@ namespace Evans.Demo.Core
 
 		public static Type FindTypeByName(string typeFullName, Assembly assembly)
 		{
-			return FindTypeByName(typeFullName, new[] { assembly });
+			return FindTypeByName(typeFullName, assembly.ToArray());
 		}
 
 		public static Type FindTypeByName(string typeFullName, IEnumerable<Assembly> assemblies)
 		{
 			return assemblies
-				.FirstOrDefault(assembly => assembly.DefinedTypes.Any(t => t.FullName == typeFullName))?
+				.FirstOrDefault(assembly => assembly.DefinedTypes.Any(t => string.Equals(t.FullName, typeFullName, StringComparison.OrdinalIgnoreCase)))?
 				.GetType(typeFullName);
 		}
 
@@ -95,7 +96,7 @@ namespace Evans.Demo.Core
 		/// <seealso cref="GetDerivedTypes{T}(IEnumerable{Assembly})" />
 		public static IEnumerable<Type> GetDerivedTypes<T>(Assembly assembly)
 		{
-			return GetDerivedTypes<T>(new Assembly[] { assembly });
+			return GetDerivedTypes<T>(assembly.ToArray());
 		}
 
 		/// <summary>
@@ -121,9 +122,9 @@ namespace Evans.Demo.Core
 		{
 			return assemblies
 				.SelectMany(x => x.GetTypes())
-				.ToList()
-				.Where(x => type.IsAssignableFrom(x) && x.IsClass)
-				.Where(x => (x != type))
+				.Where(x => type.IsAssignableFrom(x) 
+					&& x.IsClass
+					&& (x != type))
 				.ToList();
 		}
 
@@ -161,7 +162,7 @@ namespace Evans.Demo.Core
 		/// <seealso cref="GetImplementingTypes{T}(IEnumerable{Assembly})" />
 		public static IEnumerable<Type> GetImplementingTypes<T>(Assembly assembly)
 		{
-			return GetImplementingTypes<T>(new Assembly[] { assembly });
+			return GetImplementingTypes<T>(assembly.ToArray());
 		}
 
 		/// <summary>
@@ -216,7 +217,7 @@ namespace Evans.Demo.Core
 		/// <seealso cref="GetInstancesOf{TInterface}(IEnumerable{Assembly})" />
 		public static IEnumerable<TInterface> GetInstancesOf<TInterface>(Assembly assembly)
 		{
-			return GetInstancesOf<TInterface>(new Assembly[] { assembly });
+			return GetInstancesOf<TInterface>(assembly.ToArray());
 		}
 
 		/// <summary>
@@ -229,9 +230,10 @@ namespace Evans.Demo.Core
 		public static IEnumerable<TInterface> GetInstancesOf<TInterface>(IEnumerable<Assembly> assembly)
 		{
 			var instanceList = new List<TInterface>();
-			GetImplementingTypes<TInterface>(assembly).ForEach(t =>
+			var assemblyTypes = GetImplementingTypes<TInterface>(assembly).ToList();
+			assemblyTypes.ForEach(type =>
 			{
-				instanceList.Add((TInterface)Activator.CreateInstance(t));
+				instanceList.Add((TInterface)Activator.CreateInstance(type));
 			});
 
 			return instanceList;

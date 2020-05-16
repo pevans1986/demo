@@ -1,13 +1,14 @@
-﻿using Evans.Demo.Core.Domain;
-using Evans.Demo.Core.Extensions.System;
-using Evans.Demo.Core.Logging;
-using Evans.Demo.Core.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+
+using Evans.Demo.Core.Domain;
+using Evans.Demo.Core.Extensions.System;
+using Evans.Demo.Core.Logging;
+using Evans.Demo.Core.Services;
 
 namespace Evans.Demo.Core.Web.Mvc.Controllers
 {
@@ -20,13 +21,6 @@ namespace Evans.Demo.Core.Web.Mvc.Controllers
 	public class MvcController<TModel> : Controller
 		where TModel : IDomainEntity
 	{
-		#region Private Fields
-
-		private ILogger _logger;
-		private IService<TModel> _service;
-
-		#endregion Private Fields
-
 		#region Public Constructors
 
 		/// <summary>
@@ -38,8 +32,8 @@ namespace Evans.Demo.Core.Web.Mvc.Controllers
 		/// <returns></returns>
 		public MvcController(IService<TModel> service, ILogger logger)
 		{
-			_service = service;
-			_logger = logger;
+			Service = service;
+			Log = logger;
 		}
 
 		#endregion Public Constructors
@@ -49,10 +43,9 @@ namespace Evans.Demo.Core.Web.Mvc.Controllers
 		/// <summary>
 		/// The business logic class for performing actions on the model.
 		/// </summary>
-		protected IService<TModel> Service
-		{
-			get { return _service; }
-		}
+		protected IService<TModel> Service { get; }
+
+		protected ILogger Log { get; }
 
 		#endregion Protected Properties
 
@@ -67,8 +60,7 @@ namespace Evans.Demo.Core.Web.Mvc.Controllers
 		//[ValidateAntiForgeryToken]
 		public virtual ActionResult Create()
 		{
-			// TODO Use a constant
-			return View("Create", typeof(TModel).New());
+			return View(ControllerActions.CREATE, typeof(TModel).New());
 		}
 
 		/// <summary>
@@ -85,7 +77,7 @@ namespace Evans.Demo.Core.Web.Mvc.Controllers
 			try
 			{
 				Service.Add(entity);
-				return RedirectToAction("Index");
+				return RedirectToAction(ControllerActions.INDEX);
 			}
 			catch
 			{
@@ -111,7 +103,7 @@ namespace Evans.Demo.Core.Web.Mvc.Controllers
 				var guidId = Guid.Parse(id.ToString());
 				Service.Delete(guidId);
 
-				return RedirectToAction("Index");
+				return RedirectToAction(ControllerActions.INDEX);
 			}
 			catch
 			{
@@ -149,7 +141,7 @@ namespace Evans.Demo.Core.Web.Mvc.Controllers
 			try
 			{
 				Service.Update(entity);
-				return RedirectToAction("Index");
+				return RedirectToAction(ControllerActions.INDEX);
 			}
 			catch
 			{

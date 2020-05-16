@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Domain.Chat", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Core.Web.Mvc", "Evans.Demo.Core.Web.Mvc\Evans.Demo.Core.Web.Mvc.csproj", "{029F425E-F19B-40C1-9C15-9F7FC19AB080}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evans.Demo.Core.Web.MvcTests", "Tests\Evans.Demo.Core.Web.MvcTests\Evans.Demo.Core.Web.MvcTests.csproj", "{6EB33C8D-53F5-467F-8E80-F7660081388D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{029F425E-F19B-40C1-9C15-9F7FC19AB080}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{029F425E-F19B-40C1-9C15-9F7FC19AB080}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{029F425E-F19B-40C1-9C15-9F7FC19AB080}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB33C8D-53F5-467F-8E80-F7660081388D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB33C8D-53F5-467F-8E80-F7660081388D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB33C8D-53F5-467F-8E80-F7660081388D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB33C8D-53F5-467F-8E80-F7660081388D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +111,7 @@ Global
 		{79FF23B1-D6AD-4FA5-87EF-2DAAF785FE93} = {EC92D54A-18E9-4166-B013-9BDBF0BDD044}
 		{20DC8445-2BC2-472C-86E9-EE55D7ABA6F1} = {C2FAEDED-7608-44CF-A02E-140791E397DA}
 		{8279F6E1-69CB-48DF-B6BA-7DEB888696D0} = {C2FAEDED-7608-44CF-A02E-140791E397DA}
+		{6EB33C8D-53F5-467F-8E80-F7660081388D} = {EC92D54A-18E9-4166-B013-9BDBF0BDD044}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {29E9E0DD-CA74-4E3D-A01F-98EDAF133D48}

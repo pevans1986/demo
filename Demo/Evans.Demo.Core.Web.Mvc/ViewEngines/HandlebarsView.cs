@@ -1,5 +1,4 @@
-﻿using HandlebarsDotNet;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
@@ -8,24 +7,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
+using HandlebarsDotNet;
+
 namespace Evans.Demo.Core.Web.Mvc.ViewEngines
 {
 	public class HandlebarsView : IView
 	{
 		#region Private Fields
 
-		private static ConcurrentDictionary<string, Func<object, string>> _compiledViews = new ConcurrentDictionary<string, Func<object, string>>();
-		// TODO Externalize (HandlebarsViewEngine?)
-		private static IHandlebars _handlebarsRenderer = Handlebars.Create(new HandlebarsConfiguration() { FileSystem = new MvcViewEngineFileSystem() });
-		private string _viewPath;
+		private readonly string _viewPath;
 
 		#endregion Private Fields
 
 		#region Protected Properties
 
-		protected static ConcurrentDictionary<string, Func<object, string>> CompiledViews => _compiledViews;
+		protected static ConcurrentDictionary<string, Func<object, string>> CompiledViews { get; } = new ConcurrentDictionary<string, Func<object, string>>(StringComparer.OrdinalIgnoreCase);
 
-		protected static IHandlebars HandlebarsRenderer => _handlebarsRenderer;
+		// TODO Externalize (HandlebarsViewEngine?)
+		protected static IHandlebars HandlebarsRenderer { get; } = Handlebars.Create(new HandlebarsConfiguration() { FileSystem = new MvcViewEngineFileSystem() });
 
 		#endregion Protected Properties
 

@@ -26,7 +26,7 @@ namespace Evans.Demo.Core.Extensions.System
 			}
 
 			var property = self.GetType().GetProperty(propertyName);
-			return property?.GetValue(self, null);
+			return property?.GetValue(self, index: null);
 		}
 
 		/// <summary>
@@ -41,6 +41,14 @@ namespace Evans.Demo.Core.Extensions.System
 		{
 			return (T)self.GetPropertyValue(propertyName);
 		}
+
+		/// <summary>
+		/// Convenience method that returns an array containing this object.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="self"></param>
+		/// <returns></returns>
+		public static T[] ToArray<T>(this T self) => new[] { self };
 
 		#endregion Public Methods
 	}

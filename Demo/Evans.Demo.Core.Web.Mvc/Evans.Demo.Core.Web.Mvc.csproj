@@ -79,8 +79,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\DynamicAreaAttribute.cs" />
+    <Compile Include="Controllers\ControllerActions.cs" />
     <Compile Include="Controllers\DynamicController.cs" />
     <Compile Include="Controllers\MvcController.cs" />
+    <Compile Include="Extensions\HttpApplicationExtensions.cs" />
     <Compile Include="Extensions\RouteDataExtensions.cs" />
     <Compile Include="IMvcRouter.cs" />
     <Compile Include="IoC\IMvcContainer.cs" />
