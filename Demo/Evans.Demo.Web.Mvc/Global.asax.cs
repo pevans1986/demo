@@ -16,6 +16,15 @@ namespace Evans.Demo.Web.Mvc
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+			ViewEngineConfig.RegisterViewEngines(this);
+			(_disposable = new ContainerConfig()).Initialize();
+		}
+
+		private ContainerConfig _disposable;
+
+		public void Dispose()
+		{
+			_disposable?.Dispose();
 		}
 	}
 }

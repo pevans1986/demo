@@ -1,20 +1,22 @@
-﻿using Evans.Demo.Core.IoC;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Reflection;
+using System.Web.Mvc;
+
+using Evans.Demo.Core.IoC;
+
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace Evans.Demo.Core.Web.Mvc.IoC
 {
 	public class SimpleInjectorContainerMvc : SimpleInjectorContainer, IMvcContainer
 	{
-		#region Public Constructors
+		#region Constructors
 
 		public SimpleInjectorContainerMvc()
 			: base()
@@ -22,15 +24,9 @@ namespace Evans.Demo.Core.Web.Mvc.IoC
 			Options.DefaultScopedLifestyle = new WebRequestLifestyle();
 		}
 
-		#endregion Public Constructors
+		#endregion Constructors
 
-		#region Public Methods
-
-		public IContainer AutoRegisterServices()
-		{
-			// TODO Implement auto-registration
-			return this;
-		}
+		#region Methods
 
 		public IMvcContainer RegisterControllers(Assembly assembly)
 		{
@@ -42,13 +38,6 @@ namespace Evans.Demo.Core.Web.Mvc.IoC
 			(this as Container).RegisterMvcControllers(assemblies);
 			(this as Container).RegisterMvcIntegratedFilterProvider();
 
-			return this;
-		}
-
-		public IMvcContainer RegisterDomainContext<TContext>()
-			where TContext : class
-		{
-			Register<TContext>(Lifestyle.Scoped);
 			return this;
 		}
 
@@ -79,6 +68,6 @@ namespace Evans.Demo.Core.Web.Mvc.IoC
 			return base.Validate();
 		}
 
-		#endregion Public Methods
+		#endregion Methods
 	}
 }

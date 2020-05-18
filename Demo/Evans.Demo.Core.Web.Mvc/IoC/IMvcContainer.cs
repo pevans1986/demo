@@ -14,9 +14,6 @@ namespace Evans.Demo.Core.Web.Mvc.IoC
 
 		IMvcContainer RegisterControllers(Assembly[] assemblies);
 
-		IMvcContainer RegisterDomainContext<TContext>()
-			where TContext : class;
-
 		/// <summary>
 		/// Register the given implementation <see cref="Type" /> as the default concrete
 		/// type to use for resolving an instance of the given repository

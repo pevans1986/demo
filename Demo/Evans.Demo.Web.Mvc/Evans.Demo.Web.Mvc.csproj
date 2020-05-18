@@ -76,6 +76,15 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="SimpleInjector, Version=4.9.1.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.9.1\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web, Version=4.9.1.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.4.9.1\lib\net40\SimpleInjector.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web.Mvc, Version=4.9.1.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.Mvc.4.9.1\lib\net40\SimpleInjector.Integration.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -148,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\ContainerConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -196,6 +206,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\layout.hbs" />
+    <Content Include="Views\Home\home.hbs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -218,6 +229,14 @@
     <ProjectReference Include="..\Evans.Demo.Core.Web.Mvc\Evans.Demo.Core.Web.Mvc.csproj">
       <Project>{029F425E-F19B-40C1-9C15-9F7FC19AB080}</Project>
       <Name>Evans.Demo.Core.Web.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evans.Demo.Core\Evans.Demo.Core.csproj">
+      <Project>{6017E350-A76C-49D1-A409-7768F409016D}</Project>
+      <Name>Evans.Demo.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evans.Demo.Repositories.EntityFramework\Evans.Demo.Repositories.EntityFramework.csproj">
+      <Project>{E60C0CFD-D12E-440C-A31E-C2B7C45A4A24}</Project>
+      <Name>Evans.Demo.Repositories.EntityFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

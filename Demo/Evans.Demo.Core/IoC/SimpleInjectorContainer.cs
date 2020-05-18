@@ -16,11 +16,10 @@ namespace Evans.Demo.Core.IoC
 		public SimpleInjectorContainer()
 			: base()
 		{
-			//Options.DefaultScopedLifestyle = new WebRequestLifestyle();
-			Options.DefaultScopedLifestyle = Lifestyle.Scoped;
+			//Options.DefaultScopedLifestyle = Lifestyle.Scoped;
 		}
 
-		public IContainer AutoRegisterServices()
+		public virtual IContainer AutoRegisterServices()
 		{
 			// TODO Implement auto-registration
 			return this;

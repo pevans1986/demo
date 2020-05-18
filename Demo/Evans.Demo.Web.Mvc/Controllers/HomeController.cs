@@ -10,7 +10,7 @@ namespace Evans.Demo.Web.Mvc.Controllers
 	{
 		public ActionResult Index()
 		{
-			return View();
+			return View("home");
 		}
 
 		public ActionResult About()

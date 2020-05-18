@@ -90,6 +90,7 @@
     <Compile Include="MvcRouter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteInfo.cs" />
+    <Compile Include="Startup\IStartupInitializer.cs" />
     <Compile Include="ViewEngines\HandlebarsView.cs" />
     <Compile Include="ViewEngines\HandlebarsViewEngine.cs" />
     <Compile Include="ViewEngines\MvcViewEngineFileSystem.cs" />
